@@ -4,11 +4,17 @@ phases:
   pre_build:
     commands:
       - set -x
+      - ls -al /
+      - ps -ef
+      - docker ps -a
       - echo Logging in to Amazon ECR...
       - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
   build:
     commands:
       - set -x
+      - ls -al /
+      - ps -ef
+      - docker ps -a
       - echo Build started on `date`
       - echo Building the Docker image...          
       - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
